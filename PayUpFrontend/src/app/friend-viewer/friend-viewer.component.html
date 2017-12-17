@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Friends</h1>
+  <ul class="list-group">
+    <li class="list-group-item list" *ngFor="let friend of allFriends">
+      <h3>{{friend.name}}</h3>
+      <span class="floating-icon-container shadow edit-icon-container" attr.data-name="{{friend.name}}"
+      routerLink="/friend/{{friend.name}}">
+            <i class="fa fa-pencil floating-icon"></i>
+        </span>
+      <span class="floating-icon-container shadow delete-icon-container" attr.data-name="{{friend.name}}"
+            (click)="deleteFriend($event.target)">
+            <i class="fa fa-trash floating-icon"></i>
+        </span>
+    </li>
+  </ul>
+</div>
+<div routerLink="/addfriend" class="material-floating-btn">+</div>

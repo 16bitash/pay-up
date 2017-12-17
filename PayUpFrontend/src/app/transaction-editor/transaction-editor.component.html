@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Edit transaction of {{friendName}}</h1>
+  <h3>Old: {{originalTransactionAmount}}</h3>
+  <h3>New: {{editedTransactionAmount}}</h3>
+  <input class="form-control" [(ngModel)]="editedTransactionAmount" type="text">
+  <button class="btn btn-primary" (click)="saveEdit()">Save</button>
+  <button class="btn btn-danger" (click)="calcleEdit()">Cancel</button>
+</div>

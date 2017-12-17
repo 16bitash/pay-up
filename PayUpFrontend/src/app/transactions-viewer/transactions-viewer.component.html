@@ -1,0 +1,57 @@
+<div class="container">
+  <h1>Transactions:</h1>
+  <p class="no-transaction" *ngIf="(allTransactions | async) === 0">No Transactions</p>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-dark">
+      <div class="row">
+      <div class="col-4">Name</div>
+      <div class="col-4">Amount</div>
+      <div class="col-4">Date</div>
+      </div>
+    </li>
+    <li class="list-group-item list" *ngFor="let transaction of allTransactions">
+      <div class="row">
+        <div class="col-4">{{transaction.name}}</div>
+        <div class="col-4 green-color" *ngIf="transaction.amount >= 0">
+          {{'+' + transaction.amount}}
+        </div>
+        <div class="col-4 red-color" *ngIf="transaction.amount < 0">
+          {{transaction.amount}}
+        </div>
+        <div class="col-4">{{transaction.createdAt | date}}</div>
+      </div>
+      <span class="floating-icon-container shadow edit-icon-container" routerLink="/transaction/edit/{{transaction.id}}">
+            <i class="fa fa-pencil floating-icon"></i>
+        </span>
+      <span class="floating-icon-container shadow delete-icon-container" attr.data-id="{{transaction.id}}"
+            (click)="deleteTransaction(transaction.id)">
+            <i class="fa fa-trash floating-icon"></i>
+        </span>
+    </li>
+  </ul>
+</div>
+
+<!--<div class="container">-->
+<!--<table class="striped">-->
+  <!--<tr>-->
+    <!--<th>Name</th>-->
+    <!--<th>Amount</th>-->
+    <!--<th>Date</th>-->
+  <!--</tr>-->
+  <!--<tr class="list" *ngFor="let transaction of allTransactions">-->
+    <!--<td>{{transaction.name}}</td>-->
+    <!--<td class="green-color" *ngIf="transaction.amount >= 0">{{'+' + transaction.amount}}</td>-->
+    <!--<td class="red-color" *ngIf="transaction.amount < 0">{{transaction.amount}}</td>-->
+    <!--<td>{{transaction.createdAt | date}}</td>-->
+    <!--<span class="floating-icon-container shadow edit-icon-container" routerLink="/transaction/edit/{{transaction.id}}">-->
+    <!--<i class="fa fa-pencil floating-icon"></i>-->
+    <!--</span>-->
+    <!--<span class="floating-icon-container shadow delete-icon-container" attr.data-id="{{transaction.id}}"-->
+    <!--(click)="deleteTransaction(transaction.id)">-->
+    <!--<i class="fa fa-trash floating-icon"></i>-->
+    <!--</span>-->
+  <!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+
+<div routerLink="/addtransaction" class="material-floating-btn">+</div>

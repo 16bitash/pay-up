@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Transactions of {{friendName}}</h1>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-dark">
+      <div class="row">
+        <div class="col-6">Date</div>
+        <div class="col-6">Amount</div>
+      </div>
+    </li>
+    <li class="list-group-item list" *ngFor="let transaction of friendTransactions">
+      <div class="row">
+        <div class="col-6">{{transaction.createdAt | date}}</div>
+        <div class="col-6 green-color" *ngIf="transaction.amount >= 0">+{{transaction.amount}}</div>
+        <div class="col-6 red-color" *ngIf="transaction.amount < 0">{{transaction.amount}}</div>
+      </div>
+      <span class="floating-icon-container shadow edit-icon-container" routerLink="/transaction/edit/{{transaction.id}}">
+            <i class="fa fa-pencil floating-icon"></i>
+        </span>
+      <span class="floating-icon-container shadow delete-icon-container" (click)="deleteTransaction(transaction.id)">
+            <i class="fa fa-trash floating-icon"></i>
+        </span>
+    </li>
+  </ul>
+  <p class="no-transaction" *ngIf="!friendTransactions.length">No Transactions!</p>
+</div>

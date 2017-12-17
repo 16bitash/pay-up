@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6" *ngFor="let friend of friends">
+      <div class="card">
+        <div class="card-header">
+          <h2>{{friend.name}}</h2>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title green-color" *ngIf="friendsToAmount[friend.name] >= 0">
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
+            {{friendsToAmount[friend.name]}}
+          </h4>
+          <h4 class="card-title red-color" *ngIf="friendsToAmount[friend.name] < 0">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+            {{friendsToAmount[friend.name] * -1}}
+          </h4>
+          <a routerLink="/transactions/name/{{friend.name}}" class="btn btn-primary">See all transactions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

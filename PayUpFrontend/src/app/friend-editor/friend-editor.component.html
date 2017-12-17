@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Edit {{originalName}}</h1>
+  <h3>{{editedName}}</h3>
+  <input class="form-control" type="text" [(ngModel)]="editedName">
+  <br>
+  <button class="btn btn-primary" (click)="saveEdit()">Save</button>
+  <button class="btn btn-danger" (click)="calcelEdit()">Cancel</button>
+</div>
+

@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #f1f1f1;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav > ul {
+  height: 60px;
+}
+
+nav span {
+  display: list-item;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  font-family: 'Lobster', cursive;
+  font-size: 38px;
+  float: left;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  width: 150px;
+  float: left;
+  font-size: 25px;
+  text-align: center;
+  user-select: none;
+  outline: none;
+}
+
+li > a {
+  display: block;
+  text-decoration: none;
+  line-height: 60px;
+  position: relative;
+  cursor: pointer;
+}
+
+li > a::before, li > a::after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 0;
+  background-color: black;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+li > a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+li > a::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+li > a:hover::before, li > a:hover::after {
+  width: 100%;
+}
+
+.active {
+  color: white
+}
+
+.active > a::before, .active > a::after {
+  height: 50%;
+  transition: 0.3s;
+  transition-timing-function: ease-out;
+  width: 100%;
+}
